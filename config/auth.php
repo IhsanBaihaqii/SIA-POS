@@ -1,5 +1,6 @@
 <?php
 // config/auth.php
+require_once __DIR__ . '/config.php';
 session_start();
 
 function isLoggedIn() {
@@ -8,7 +9,7 @@ function isLoggedIn() {
 
 function requireLogin() {
     if (!isLoggedIn()) {
-        header('Location: ../login.php');
+        header('Location: ' . BASE_URL . 'login.php');
         exit;
     }
 }
@@ -25,5 +26,9 @@ function currentUser() {
         'username' => $_SESSION['username'],
         'role' => $_SESSION['role']
     ];
+}
+
+function url($path = '') {
+    return BASE_URL . ltrim($path, '/');
 }
 ?>
