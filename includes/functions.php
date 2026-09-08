@@ -3,10 +3,6 @@
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../config/auth.php';
 
-function url($path = '') {
-    return BASE_URL . ltrim($path, '/');
-}
-
 function getTotalPendapatan($pdo, $tanggalMulai = null, $tanggalSelesai = null) {
     $sql = "SELECT COALESCE(SUM(total), 0) AS total FROM transaksi WHERE status_pembayaran = 'lunas'";
     $params = [];
